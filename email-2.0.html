@@ -1,0 +1,31 @@
+<!DOCTYPE html><html><head><meta
+charset="UTF-8" /><title>Email 2.0 - Improvements to the email spec to make more reliable and secure.</title><link
+rel="stylesheet" type="text/css" href="/style_70b6cd0.css" /><meta
+name="description" content="Improvements to the email spec to make more reliable and secure." /></head><body>
+<noscript><iframe
+src="//www.googletagmanager.com/ns.html?id=GTM-N5BJ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-N5BJ');</script> <header
+id="header">
+<hgroup><h1 id="site-title"><a
+href="/" title="Matt" rel="home">Matt</a></h1><h2 id="site-description">Geek, Coder, Reader, Gamer</h2>
+</hgroup><nav
+id="mainmenu" role="navigation"><h3 class="assistive-text">Main menu</h3><div
+class="skip-link"><a
+class="assistive-text" href="#content" title="Skip to primary content">Skip to primary content</a></div><ul
+id="menu"><li><a
+href="/" title="Home">Home</a></li><li><a
+href="/about.html">About</a></li><li><a
+href="/license.html">License</a></li><li><a
+href="/projects.html">Projects</a></li></ul>
+</nav>
+</header><div
+id="content" role="main"><article>
+<header><h1>Email 2.0</h1>
+</header><div
+class="entry-content"><p>Hashing out my idea for email 2.0 - This should be written into a proper document</p><h1>Example of sending mail</h1><ul><li><p>example.org mail server</p><ul><li>Stores public key for bob@example.org</li></ul></li><li><p>example.com mail server</p><ul><li>Stores public key for alice@example.com</li></ul></li></ul><p>bob@example.org wants to send an email to alice@example.com</p><ul><li>bob composes his message with his email client and presses send</li><li>bob's email client connects the mail server for example.com (by mx record lookup) and asks for the public key for alice@example.com</li><li>bob's email client encrypts the message with alice's public key - only From and To headers remain unencrypted, all other headers are encrypted</li><li>bob's email client signs the message with bob's private key.</li><li>bob's email client sends the message to the example.com mail server</li><li>example.com mail server connects to example.org mail server (by mx record lookup) and asks for the public key for bob@example.com</li><li>example.com mail server verifies the signiture with bob@example.com's public key</li><li>email is accepted if the signiture matches, and rejected if it does not</li></ul><h1>Details</h1><p>Encryption is optional, since the part that matters the most in this is the signing to authenticate the email. Since you already have the method of retrieving public keys from mail servers and and all users must have private keys to sign the messages, it is easy enough just to encrypt the message as well.</p><h1>Pros</h1><p>Spoofed mail is history.</p><ul><li>All email that is sent must be signed with the users private key or it is not delivered.</li></ul><p>Clients can send mail directly</p><ul><li>Mail clients can do all of the connection to the remote server without having to relay through their own server.</li><li>It is still possible to have the server send, it would just need a copy of the public key, or the email should be pre-signed.</li></ul><p>No more IP blacklisting</p><ul><li>All mail can only be sent by being signed by a private key that can be verified as coming from that domain</li><li>Either the email address or domain can be blocked for spam instead</li></ul><h1>Cons</h1><p>Not backwards compatable</p><ul><li>The requirment that all messages must be signed, makes it so all servers and clients must be updated</li><li>However, servers and clients can have a fallback<ul><li>Clients with Email 2.0 connecting to an email server can test if it supports email 2.0<ul><li>If it does not, the client should fallback to old methods.</li></ul></li><li>Servers with Email 2.0 can optionally choose to support mail coming from current methods and treat it as it currently does.</li></ul></li></ul><h1>Encryption</h1><p>All encryption and signing is done with asymmetric keypairs. A standard will need to be decidied on of what method to use.</p></div>
+</article></div><footer
+id="colophon" role="contentinfo"></footer></body></html>

@@ -1,0 +1,24 @@
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^www\.matth\.co$ [NC]
+RewriteRule ^(.*)$ http://matth.co/$1 [L,R=301]
+RewriteCond %{HTTP_HOST} ^matth\.pagodabox\.com$ [NC]
+RewriteRule ^(.*)$ http://matth.co/$1 [L,R=301]
+
+
+RewriteRule ^about/$ /about.html [L,R=301]
+RewriteRule ^license/$ /license.html [L,R=301]
+RewriteRule ^mount-sshfs-with-a-script/$ /blog/mount-sshfs-with-a-script.html [L,R=301]
+RewriteRule ^mount-sshfs-with-a-script.html$ /blog/mount-sshfs-with-a-script.html [L,R=301]
+RewriteRule ^water-for-elephants/$ /blog/water-for-elephants.html [L,R=301]
+RewriteRule ^water-for-elephants.html$ /blog/water-for-elephants.html [L,R=301]
+RewriteRule ^the-name-of-the-wind/$ /blog/the-name-of-the-wind.html [L,R=301]
+RewriteRule ^the-name-of-the-wind.html$ /blog/the-name-of-the-wind.html [L,R=301]
+RewriteRule ^americans-are-afraid-of-numbers/$ /blog/americans-are-afraid-of-numbers.html [L,R=301]
+RewriteRule ^americans-are-afraid-of-numbers.html$ /blog/americans-are-afraid-of-numbers.html [L,R=301]
+RewriteRule ^a-wireless-wired-network/$ /blog/a-wireless-wired-network.html [L,R=301]
+RewriteRule ^a-wireless-wired-network.html$ /blog/a-wireless-wired-network.html [L,R=301]
+RewriteRule ^visudo-sudoers/$ /blog/visudo-sudoers.html [L,R=301]
+RewriteRule ^visudo-sudoers.html$ /blog/visudo-sudoers.html [L,R=301]
+RewriteRule ^kindle-3g-and-wi-fi-special-offers/$ /blog/kindle-3g-and-wi-fi-special-offers.html [L,R=301]
+RewriteRule ^kindle-3g-and-wi-fi-special-offers.html$ /blog/kindle-3g-and-wi-fi-special-offers.html [L,R=301]
